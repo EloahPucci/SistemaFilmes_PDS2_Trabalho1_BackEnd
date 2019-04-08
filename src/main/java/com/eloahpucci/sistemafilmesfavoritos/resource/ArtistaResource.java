@@ -19,39 +19,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.eloahpucci.sistemafilmesfavoritos.domain.Filme;
-import com.eloahpucci.sistemafilmesfavoritos.respository.FilmeRepository;
+import com.eloahpucci.sistemafilmesfavoritos.domain.Artista;
+import com.eloahpucci.sistemafilmesfavoritos.respository.ArtistaRepository;
 
 @RestController
-@RequestMapping(value="/filmes")
+@RequestMapping(value="/artistas")
 @CrossOrigin(origins = "http://localhost")
-public class FilmeResource {
+public class ArtistaResource {
 	
 	@Autowired
-	private FilmeRepository service;
+	private ArtistaRepository service;
 	
 	@GetMapping
-	public ResponseEntity<List<Filme>> findAll() {
-		List<Filme> listaFilmes = service.findAll();
-		return ResponseEntity.ok().body(listaFilmes);
+	public ResponseEntity<List<Artista>> findAll() {
+		List<Artista> listaArtistas = service.findAll();
+		return ResponseEntity.ok().body(listaArtistas);
 	}
 		
 	@PostMapping
-	public ResponseEntity<?> salvarFilme(@Valid @RequestBody Filme filme) {
-		service.save(filme);
+	public ResponseEntity<?> salvarArtista(@Valid @RequestBody Artista artista) {
+		service.save(artista);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-		        .buildAndExpand(filme.getCodigo()).toUri();
+		        .buildAndExpand(artista.getCodigo()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 	
 	@PutMapping
-	public ResponseEntity<?> atualizarFilme(@Valid @RequestBody Filme filme) {
-		service.save(filme);
+	public ResponseEntity<?> atualizarArtista(@Valid @RequestBody Artista artista) {
+		service.save(artista);
 	    return ResponseEntity.noContent().build();
 	}
 	
 	@DeleteMapping(value="{codigo}")
-	public ResponseEntity<?> excluirFilme(@PathVariable Integer codigo) {
+	public ResponseEntity<?> excluirArtista(@PathVariable Integer codigo) {
 		try {
 			service.deleteById(codigo);
 			return ResponseEntity.ok(codigo);	
