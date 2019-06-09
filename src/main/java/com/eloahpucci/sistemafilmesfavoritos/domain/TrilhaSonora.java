@@ -14,15 +14,17 @@ public class TrilhaSonora implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codigo;
 	private String nomeMusica;
-	private String filmes;
+	private String artistaInterprete;
+	private String filme;
 	
 	public TrilhaSonora() {}
 
-	public TrilhaSonora(Integer codigo, String nomeMusica, String filmes) {
+	public TrilhaSonora(Integer codigo, String nomeMusica, String artistaInterprete, String filme) {
 		super();
 		this.codigo = codigo;
 		this.nomeMusica = nomeMusica;
-		this.filmes = filmes;
+		this.artistaInterprete = artistaInterprete;
+		this.filme = filme;
 	}
 
 	public Integer getCodigo() {
@@ -41,11 +43,19 @@ public class TrilhaSonora implements Serializable {
 		this.nomeMusica = nomeMusica;
 	}
 
-	public String getFilmes() {
-		return filmes;
+	public String getArtistaInterprete() {
+		return artistaInterprete;
 	}
 
-	public void setFilmes(String filmes) {
-		this.filmes = filmes;
+	public void setArtistaInterprete(String artistaInterprete) {
+		this.artistaInterprete = artistaInterprete;
+	}
+
+	public String getFilme() {
+		return filme;
+	}
+
+	public void setFilmes(String filme) {
+		this.filme = filme;
 	}	
 }
